@@ -1,13 +1,6 @@
-import Head from "next/head"
+import Home from "./Home"
 
-const Home = () => {
-  return (
-    <>
-      <Head>
-        <title>Início | ig.news</title>
-      </Head>
-      <h1>Home</h1>
-    </>
-  )
+const Index = () => {
+  return <Home />
 }
-export default Home
+export default Index
