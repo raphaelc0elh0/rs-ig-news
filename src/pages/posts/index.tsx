@@ -2,7 +2,6 @@ import { GetStaticProps } from "next"
 import Head from "next/head"
 import { getPrismicClient } from "../../services/prismic"
 import styles from "./styles.module.scss"
-import * as prismicHelper from "@prismicio/helpers"
 import Link from "next/link"
 
 interface PostsProps {
@@ -43,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const posts = response.map((post) => ({
     slug: post.uid,
-    title: prismicHelper.asText(post.data.title),
+    title: post.data.title,
     excerpt: post.data.content.find((content) => content.type === "paragraph")?.text ?? "",
     updatedAt: new Date(post.last_publication_date).toLocaleDateString("pt-BR", {
       day: "2-digit",
