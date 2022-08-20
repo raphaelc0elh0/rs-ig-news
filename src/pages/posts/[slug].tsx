@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
   const response = await prismic.getByUID("post", String(slug), {})
   const post = {
     slug,
-    title: response.data.title,
+    title: prismicHelper.asText(response.data.title),
     content: prismicHelper.asHTML(response.data.content),
     updatedAt: new Date(response.last_publication_date).toLocaleDateString("pt-BR", {
       day: "2-digit",
