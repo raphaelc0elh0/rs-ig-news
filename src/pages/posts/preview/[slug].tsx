@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = {
     slug,
     title: response.data.title,
-    content: prismicHelper.asHTML(response.data.content.splice(0, 3)),
+    content: response.data.content.find((content) => content.type === "paragraph")?.text ?? "",
     updatedAt: new Date(response.last_publication_date).toLocaleDateString("pt-BR", {
       day: "2-digit",
       month: "long",
